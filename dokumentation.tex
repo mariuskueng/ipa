@@ -1,0 +1,184 @@
+%  --------------------------------------------------------------------------
+%  IPA yatplaner Dokumentation
+%  Created by Marius Küng on 2012-05-06.
+%  --------------------------------------------------------------------------
+
+%  --------------------------------------------------------------------------
+%  Latex Document Settings
+%  --------------------------------------------------------------------------
+
+\documentclass[
+11pt, % Schriftgrösse
+a4paper, % A4 Papier
+BCOR10mm, % Absoluter Wert der Bindekorrektur, z.B. BCOR1cm
+DIV14, % Satzspiegel festlegen siehe
+       % http://www.ctex.org/documents/packages/nonstd/koma-script.pdf
+footsepline = false, % Trennlinie zwischen Textkörper und Fußzeile
+                     % bei normalen Seiten
+headsepline, % Trennlinie zwischen Kopfzeile und Textkörper
+             % bei normalen Seiten
+oneside, % Zweiseitig
+openright,
+halfparskip, % Europäischer Satz mit Abstand zwischen den Absätzen
+abstracton, % inkl. Abstract
+listof=totocnumbered, % Abb.- und Tab.verzeichnis im Inhaltsverzeichnis
+bibliography=totocnumbered % Lit.zeichnis in Inhaltsverzeichnis aufnehmen
+]{scrreprt}
+
+\usepackage[automark]{scrpage2} % Gestaltung von kopf- und Fußzeile
+\usepackage[ngerman]{babel}
+\usepackage[ngerman]{translator}
+\usepackage{tocbasic}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} % Latin Modern
+\usepackage[T1]{fontenc}
+\usepackage{hyphenat}
+\usepackage{ae} % Schöne Schriften für PDF-Dateien
+
+% Tradmark
+\def\TTra{\textsuperscript{\texttrademark}}
+
+%1.5 Zeilenabstand
+\usepackage[onehalfspacing]{setspace}
+
+% Festlegung des Seitenstils (scrpage2)
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\automark[chapter]{section}
+
+% \lehead{\sffamily\upshape\headmark}
+% \cehead{}
+% \rehead{}
+% \lefoot[\pagemark]{\upshape \pagemark}
+% \cefoot{}
+% \refoot{}
+% \lohead{}
+% \cohead{}
+\lohead{\sffamily\upshape\headmark}
+\lofoot{}
+\cofoot[\today]{}
+\rofoot[\pagemark]{\scshape \pagemark}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+\usepackage{longtable}
+
+% Abkürzungsverzeichnis erstellen.
+\usepackage[printonlyused]{acronym}
+
+% schöne Tabelle zeichnen
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.4} %Die Zeilenabstände in Tabellen angepasst.
+
+% für variable Breiten
+\usepackage{tabularx}
+
+% Durchgestrichener Text
+\usepackage[normalem]{ulem} %emphasize weiterhin kursiv
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+\usepackage{eurosym}
+
+\usepackage{natbib}
+
+\usepackage{paralist}
+
+\usepackage{array,ragged2e}
+
+\usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{
+  bookmarks=true,         % show bookmarks bar?
+  unicode=true,           % non-Latin characters in Acrobat’s bookmarks
+  pdftoolbar=true,        % show Acrobat’s toolbar?
+  pdfmenubar=true,        % show Acrobat’s menu?
+  pdffitwindow=true,      % window fit to page when opened
+  pdfstartview={FitH},    % fits the width of the page to the window
+  pdftitle={IPA Dokumentation},   
+  pdfauthor={Marius Küng},
+  pdfsubject={Dokumentation IPA yatplaner},
+  pdfcreator={TeX Live 2009},
+  pdfproducer={pdfTeX, Version 3.1415926-1.40.10},
+  pdfnewwindow=true,      % links in new window
+  colorlinks=true,       % false: boxed links; true: colored links
+  linkcolor=blue,          % color of internal links
+  citecolor=black,        % color of links to bibliography
+  filecolor=magenta,      % color of file links
+  urlcolor=cyan          % color of external links
+  % linkcolor=black,          % color of internal links
+  % citecolor=black,        % color of links to bibliography
+  % filecolor=black,      % color of file links
+  % urlcolor=black          % color of external links
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx}
+\else
+    \usepackage{graphicx}
+\fi
+
+\makeatletter 
+\let\orgdescriptionlabel\descriptionlabel 
+\renewcommand*{\descriptionlabel}[1]{% 
+  \let\orglabel\label 
+  \let\label\@gobble 
+  \phantomsection 
+  \edef\@currentlabel{#1}% 
+  %\edef\@currentlabelname{#1}% 
+  \let\label\orglabel 
+  \orgdescriptionlabel{#1}% 
+} 
+\makeatother 
+
+%  --------------------------------------------------------------------------
+%  Start Document
+%  --------------------------------------------------------------------------
+\title{Dokumentation IPA yatplaner}
+
+\author{IPA in Applikationsentwicklung\\
+    \\
+    Auszubildender - Marius Kümg\\
+	Auftraggeber - allink.creative GmbH\\
+    Projektbetreuer - Silvan Spross\\
+    Experte - asdf asdf\\
+    Durchführungsort - allink.creative GmbH Zürich\\
+	\\
+	Informatikmittelschule Basel}
+
+\date{März 2011 bis Juni 2011}
+
+\begin{document}
+    \ifpdf
+        \DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+    \else
+        \DeclareGraphicsExtensions{.eps, .jpg}
+    \fi
+
+    \pagenumbering{Alph}
+  
+    \maketitle
+    
+    
+
+    \pagenumbering{Roman}
+  
+    \tableofcontents
+      
+    \chapter{Einführung}
+    \input{./kapitel/01_einfuehrung.tex}
+      
+    \listoffigures
+    \listoftables
+    % \lstlistoflistings
+  
+    \bibliographystyle{unsrtnat}
+    \bibliography{literaturverzeichnis}
+        
+\end{document}
