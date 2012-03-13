@@ -1,19 +1,57 @@
 %!TEX root = ../dokumentation.tex
 \section{Umfeld}
-stand alone
-allink projektablauf
-tafel mit post-its
-kein mehrwert für auswertung
-ist in rails und nicht in python/django programmiert
-
-Ist dieser Abschnitt nötig?
-%Der Wochenplaner wird in den allink.planer eingefügt und kann über den Verwaltungsbereich geöffnet werden.
+Momentan läuft der Wochenplaner vom allink.planer getrennt und kann nicht in den allink Projektablauf einbezogen werden.
+Das Tool fungiert mehr als eine Tafel auf die Post-It's geklebt werden. D. h. die Aufgaben sind nicht direkt im Projektmanagenttool mit der Person verbindet.
+Somit bietet das Tool keinen Mehrwert bei der Auswertung des Projektablaufs.\\
+\\
+Das Tool ist in Ruby on Rails programmiert, was nicht (mehr) dem Firmenstandard entspricht, und kann deshalb nur mühsam gewartet und erweitert werden.
 
 \section{Analyse Wochenplaner (IST-Zustand)}
 \subsection{Ansichten}
-\subsection{Funktionsumfang}
+Der Wochenplaner verfügt über mehrere Ansichten:
+\begin{itemize}
+    \item Kalenderansicht der aktuellen Woche (Screenshot?)
+    \item Übersicht aller Angestellten
+    \item Monatsansicht einer Person
+    \item Übersicht aller erfassten Tasks
+\end{itemize}
 
+\subsection{Funktionsumfang}
+\begin{itemize}
+    \item Neue Task durch Doppelklick auf Personentag per Dialog erfassen
+    \item Doppelklick auf Task öffnet die Detailansicht (um bspw. Änderungen vorzunehmen)
+    \item Verschiebung einer Task per Drag \& Drop
+    \begin{itemize}
+        \item Task auf in anderen Tag verschieben
+        \item Task einer anderen Person zuweisen
+        \item Task innerhalb eines Tages verschieben
+    \end{itemize}
+    \item In der Kalenderwoche per Link vor- oder zurückspringen
+    \item weitere 7 Tage in der Ansicht hinzufügen (kann auch rückgängig gemacht werden)
+    \item Wochentage können für wiederkehrende Events (Schule, Frei) markiert werden
+\end{itemize}
 \section{Definition Muss / Kann Ziele}
+Sitzung Muss Kann Ziele\\
+\\
+MUSS\\
+- Ansichten
+    - Ansicht der aktuellen Woche (Startseite)
+    - Alle anderen Übersichten können in den Django-admin ausgelagert werden
+
+
+- Bedienung
+    - Doppelklick auf Personentag öffnet Add Task Dialog
+        - abschicken des Forms speichert die Task
+    - Doppelklick auf Task öffnet Task Detailansicht
+    - Verschiebung einer Task per Drag & Drop
+        - Task in einen anderen Tag verschieben
+        - Tasks innerhalb eines Tages sortieren
+
+\\
+KANN\\
+- Doppelklick auf Task öffnet Dialog & Task kann direkt bearbeitet und abgespeichert werden
+- Per Tastenkombination kann eine Task kopiert werden und neu eingefügt werden
+- Löschen per delete taste
 
 \section{Lösungsvarianten (SOLL-Möglichkeiten)}
 
