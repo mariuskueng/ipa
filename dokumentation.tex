@@ -146,9 +146,9 @@ bibliography=totocnumbered % Lit.zeichnis in Inhaltsverzeichnis aufnehmen
     \\
     Auszubildender - Marius Kümg\\
 	Auftraggeber - allink.creative GmbH\\
-    Projektbetreuer - Silvan Spross\\
-    Experte - asdf asdf\\
-    Durchführungsort - allink.creative GmbH Zürich\\
+    Projektleiter - Silvan Spross\\
+    Experte - Antonio Di Luzio\\
+    Durchführungsort - allink.creative GmbH\\
 	\\
 	Informatikmittelschule Basel}
 
@@ -167,13 +167,22 @@ bibliography=totocnumbered % Lit.zeichnis in Inhaltsverzeichnis aufnehmen
     
     
 
-    \pagenumbering{Roman}
+    \pagenumbering{arabic}
   
     \tableofcontents
-      
-    \chapter{Einführung}
-    \input{./kapitel/01_einfuehrung.tex}
-      
+    
+    \part{Umfeld und Ablauf}
+        \chapter{Einführung}
+            \input{./kapitel/01_einfuehrung.tex}
+        \chapter{Augabenstellung}
+            \input{./kapitel/03_aufgabenstellung.tex}
+    \part{Projekt}
+        \chapter{Analyse}
+            \input{./kapitel/02_analyse.tex}
+    
+    \part{Arbeitsjournal}
+        \input{./arbeitsjournal/arbeitsjournal.tex}
+    
     \listoffigures
     \listoftables
     % \lstlistoflistings
