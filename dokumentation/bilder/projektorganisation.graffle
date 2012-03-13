@@ -46,7 +46,7 @@
 	<key>Creator</key>
 	<string>Marius Küng</string>
 	<key>DisplayScale</key>
-	<string>1 0/72 in = 1 0/72 in</string>
+	<string>1 0/72 in = 1.0000 in</string>
 	<key>FileType</key>
 	<string>flat</string>
 	<key>GraphDocumentVersion</key>
@@ -167,7 +167,7 @@ Marc Egli}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
 
 \f0\fs24 \cf0 \expnd0\expndtw0\kerning0
-Creative Director\
+Creative Direction\
 David Zangger}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
@@ -207,7 +207,7 @@ David Zangger}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
 
 \f0\fs24 \cf0 \expnd0\expndtw0\kerning0
-Entwickler\
+Entwicklung\
 Marius K\'fcng}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
@@ -215,7 +215,7 @@ Marius K\'fcng}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{314, 309.49402}, {180, 117}}</string>
+			<string>{{320.79364, 309.49402}, {166.41273, 117}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FontInfo</key>
@@ -245,7 +245,7 @@ Marius K\'fcng}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
 \f0\fs24 \cf0 \expnd0\expndtw0\kerning0
-Projektleiter\
+Projektleitung\
 Silvan Spross}</string>
 			</dict>
 		</dict>
@@ -307,8 +307,8 @@ Silvan Spross}</string>
 			<integer>6</integer>
 			<key>Points</key>
 			<array>
-				<string>{347.42093, 426.85449}</string>
-				<string>{312.55191, 463.12952}</string>
+				<string>{347.29907, 426.85413}</string>
+				<string>{312.35535, 463.12851}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -338,8 +338,8 @@ Silvan Spross}</string>
 			<integer>1167</integer>
 			<key>Points</key>
 			<array>
-				<string>{461.30356, 426.85226}</string>
-				<string>{496.61646, 463.12323}</string>
+				<string>{460.45773, 426.85489}</string>
+				<string>{495.25238, 463.13055}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -369,8 +369,8 @@ Silvan Spross}</string>
 			<integer>1168</integer>
 			<key>Points</key>
 			<array>
-				<string>{404.30606, 426.99402}</string>
-				<string>{404.49277, 462.99011}</string>
+				<string>{403.87582, 426.99402}</string>
+				<string>{403.80005, 462.99005}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -400,8 +400,8 @@ Silvan Spross}</string>
 			<integer>1171</integer>
 			<key>Points</key>
 			<array>
-				<string>{404.00003, 272.99802}</string>
-				<string>{404.00003, 308.99399}</string>
+				<string>{403.67068, 272.99802}</string>
+				<string>{403.44495, 308.99405}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -471,7 +471,7 @@ Silvan Spross}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-03-13 08:14:27 +0000</string>
+	<string>2012-03-13 14:15:42 +0000</string>
 	<key>Modifier</key>
 	<string>Marius Küng</string>
 	<key>NotesVisible</key>
