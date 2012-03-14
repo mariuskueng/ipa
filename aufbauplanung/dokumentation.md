@@ -17,10 +17,12 @@ Dokumentationsaufbau
  
 2. Teil Projekt 
 - Projektbeschreibung: Lösung beschreiben und erklären (Details im Heft) 
-  - Präzisierung Aufgabenstellung (Analyse) Analyse yatplaner (IST-Zustand)
+  - Präzisierung Aufgabenstellung (Analyse)
+  - Analyse yatplaner (IST-Zustand)
   - Definition Muss / Kann Ziele
-  - Lösungsvarianten (SOLL-Möglichkeiten)
-  - Entscheidung Projektleitung Variante
+(  - Lösungsvarianten (SOLL-Möglichkeiten)
+  - Entscheidung Projektleitung Variante)
+  
   - Realisierung gewählte Variante
     - ERM
     - Modellierung (Django, aufsetzen Projekt) 

@@ -6,11 +6,34 @@ Somit bietet das Tool keinen Mehrwert bei der Auswertung des Projektablaufs.\\
 \\
 Das Tool ist in Ruby on Rails programmiert, was nicht (mehr) dem Firmenstandard entspricht, und kann deshalb nur mühsam gewartet und erweitert werden.
 
+\section{Präzisierung der Aufgabenstellung}
+Da die Aufgabenstellung detailliert erfasst wurde und ein Prototyp existiert, ist relativ klar was die eigentliche Aufgabenstellung umfasst.
+Zur weiteren Präzisierung, werde ich eine detaillierte IST-Analyse vornehmen. Diese wird mit dem Auftraggeber besprochen, 
+damit die MUSS- und KANN-Ziele erfasst werden können und ersichtlich wird, welche Funktionalitäten überhaupt noch Sinn machen und was weggelassen werden kann.
+
 \section{Analyse Wochenplaner (IST-Zustand)}
-\subsection{Ansichten}
-Der Wochenplaner verfügt über mehrere Ansichten:
+
+\subsection{Modellierung}
+    Analysiert anhand der Rails-Modelle\\
+    \\
+    Person
+    \begin{itemize}
+        \item Name
+        \item Locked Days (gesperrte Tage, Auswahl von Montag bis Freitag)
+        \item Beschreibungstext für jeden gesperrten Tag
+    \end{itemize}
+    Task
+    \begin{itemize}
+        \item Name
+        \item Datum (Fälligkeitsdatum, DATE)
+        \item Person (Fremdschlüssel)
+        \item Dauer (Stundenanzahl)
+    \end{itemize}
+
+\subsection{Darstellung}
+Der Wochenplaner verfügt über mehrere Darstellungen:
 \begin{itemize}
-    \item Kalenderansicht der aktuellen Woche (Screenshot?)
+    \item Kalenderansicht der aktuellen Woche (Screenshot)
     \item Übersicht aller Angestellten
     \item Monatsansicht einer Person
     \item Übersicht aller erfassten Tasks
@@ -18,41 +41,65 @@ Der Wochenplaner verfügt über mehrere Ansichten:
 
 \subsection{Funktionsumfang}
 \begin{itemize}
-    \item Neue Task durch Doppelklick auf Personentag per Dialog erfassen
-    \item Doppelklick auf Task öffnet die Detailansicht (um bspw. Änderungen vorzunehmen)
+    \item Neue Task durch Doppelklick auf Personentag per Dialog erfassen (Screenshot)
+    \item Klick auf Task öffnet die Detailansicht (um bspw. Änderungen vorzunehmen)
     \item Verschiebung einer Task per Drag \& Drop
     \begin{itemize}
-        \item Task auf in anderen Tag verschieben
+        \item Task in anderen Tag verschieben
         \item Task einer anderen Person zuweisen
-        \item Task innerhalb eines Tages verschieben
     \end{itemize}
     \item In der Kalenderwoche per Link vor- oder zurückspringen
     \item weitere 7 Tage in der Ansicht hinzufügen (kann auch rückgängig gemacht werden)
     \item Wochentage können für wiederkehrende Events (Schule, Frei) markiert werden
 \end{itemize}
-\section{Definition Muss / Kann Ziele}
-Sitzung Muss Kann Ziele\\
-\\
-MUSS\\
-- Ansichten
-    - Ansicht der aktuellen Woche (Startseite)
-    - Alle anderen Übersichten können in den Django-admin ausgelagert werden
+\subsection{Defizite}
+    \begin{itemize}
+        \item Die Sperrtage haben kein Startdatum und sind für jeden Wochentag erfasst
+    \end{itemize}
 
+\section{Definition Ziele}
+In einer Sitzung mit der Projektleitung wurde der IST-Zustand besprochen und die Ziele definiert.
 
-- Bedienung
-    - Doppelklick auf Personentag öffnet Add Task Dialog
-        - abschicken des Forms speichert die Task
-    - Doppelklick auf Task öffnet Task Detailansicht
-    - Verschiebung einer Task per Drag & Drop
-        - Task in einen anderen Tag verschieben
-        - Tasks innerhalb eines Tages sortieren
+\subsection{MUSS-Ziele}
+\begin{table}[!ht]
+\begin{center}
+    \begin{tabular}{llp{8cm}l}
+        \toprule Nr & Funktion & Beschreibung \\
+        \midrule 1 & Task erfassen & Der Benutzer kann eine neue Task erfassen. \\
+        \midrule 2 & Task Namen geben & Der Benutzer kann einem Task einen Namen geben. \\
+        \midrule 3 & Task Datum geben & Der Benutzer kann einem Task ein Datum geben. \\
+        \midrule 4 & Task Person zuweisen & Der Benutzer kann einem Task eine Person zuweisen. \\
+        \midrule 5 & Task Dauer geben & Der Benutzer kann einem Task eine Dauer (in Stunden) geben. \\
+        \midrule 6 & Task bearbeiten & Der Benutzer kann einen Task bearbeiten. \\ 
+        \midrule 7 & Task löschen & Der Benutzer kann einen Task löschen. \\
+        \midrule 8 & Person hinzufügen & Der Benutzer kann eine Person dem Wochenplaner hinzufügen. \\
+        \midrule 9 & Sperrtag Person zuweisen & Der Benutzer kann einer Person einen Sperrtag zuweisen. \\
+        \midrule 10 & Sperrtag Namen geben & Der Benutzer kann einem Sperrtag einen Namen geben. \\
+        \midrule 11 & Sperrtag bearbeiten & Der Benutzer kann einen Sperrtag bearbeiten.\\
+        \midrule 12 & Sperrtag löschen & Der Benutzer kann einen Sperrtag löschen.\\
+        \midrule 13 & Task einem Projekt zuweisen & Der Benutzer kann einen Task einem Projekt zuweisen.\\
+        \bottomrule
+    \end{tabular}
+    \caption{Zwingend umzusetzende Funktionen des Prototypen}
+    \label{tab:muss_funktionen}
+\end{center}
+\end{table}
+\subsection{KANN-Ziele}
+\begin{table}[!ht]
+\begin{center}
+    \begin{tabular}{llp{8cm}l}
+        \toprule Nr & Funktion & Beschreibung & Priorität \\
+        \midrule 14 & Task duplizieren & Der Benutzer kann einen Task duplizieren. & 1\\
+        \midrule 15 & Sperrtag Startdatum geben & Der Benutzer kann einem Sperrtag ein Startdatum geben. &  3\\ 
+        \midrule 16 & Warnmeldung Max & Es erscheint eine Warnmeldung wenn die Summe aller Arbeitsstunden pro Tag 8h überschreiten. & 4\\
+        \midrule 17 & Tasks sortieren & Tasks können innerhalb eines Tages sortiert werden. & 2\\
+        \bottomrule
+    \end{tabular}
+    \caption{Nicht zwingend umzusetzende Funktionen des Prototypen}
+    \label{tab:kann_funktionen}
+\end{center}
+\end{table}
 
-\\
-KANN\\
-- Doppelklick auf Task öffnet Dialog & Task kann direkt bearbeitet und abgespeichert werden
-- Per Tastenkombination kann eine Task kopiert werden und neu eingefügt werden
-- Löschen per delete taste
-
-\section{Lösungsvarianten (SOLL-Möglichkeiten)}
-
-\section{Entscheidung Projektleitung Variante}
+% \section{Lösungsvarianten (SOLL-Möglichkeiten)}
+% 
+% \section{Entscheidung Projektleitung Variante}
