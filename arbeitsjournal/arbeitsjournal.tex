@@ -12,7 +12,7 @@ Beginn IPA yatplaner
     \item Vorkenntnisse erfassen
     \item Vorarbeiten erfassen
     \item Firmenstandards erfassen
-    \item Teil 1 Der Doku erfasst
+    \item Ziel erreicht: Teil 1 Der Doku erfasst
     Teil 2\\
     \item Umfeld erfassen
     \item IST-Analyse vorerfassen (Ansichten, Funktionalität)
@@ -28,7 +28,9 @@ Beginn IPA yatplaner
     \item ERM für Wochenplaner erstellt
     \item allink.planer github repository gecloned
     \item Entwicklungsumgebung aufgesetzt
+    \item Ziel erreicht: Teil 2 zum Grossteil der Dokumentation erfasst und mit Realisierung begonnen
     \item mit Django-Modellierung begonnen (Task, DayConfiguration)
+    \item Habe bis jetzt für Doku mehr Zeit gebraucht als im Zeitplan vorgesehen
 \end{itemize}
 \section{15.03.2012}
 \begin{itemize}
@@ -39,4 +41,21 @@ Beginn IPA yatplaner
     \item View erstellen für alle Tasks, Personen und Tage
     \item Template erstellt und Tabelle so aufgesetzt damit Daten korrekt eingefügt werden
     \item Template begonnen zu stylen
+    \item Ziel erreicht: Daten korrekt aus Modell laden und in Template einsetzen, Template funktioniert
+    \item (Bin im Zeitplan mit Realisierung)
 \end{itemize}
+\section{16.03.2012}
+    \begin{itemize}
+        \item Ansicht funktioniert für erste Versuche mit jQueryUI
+        \item Task sind verschiebbar und sortierbar in andere Tage (ohne callback)
+        \item alle Tasks werden zu javascript Objekte der Klasse Task
+        \item jquery methoden hinzugefügt
+        \item dialog hinzugefügt
+        \item Task Objekt erweitert mit save methode wenn eine Task gespeichert wird
+        \item Django Task Formular
+        \item Django Task Piston Handler (json)
+        \item AJAX POST schicken
+        \item json piston nimmt POST entgegen und führt das formular aus welches die daten in die db speicher
+        \item wenn neuer eintrag gemacht wurde wird die neue task.id zurückgeschickt um es lokal im js task objekt zu speichern
+        \item Ziel: jQueryUI einrichten, mind. POST per Ajax möglich und dynamisches einfügen in Tabelle (beide erreicht)
+    \end{itemize}
