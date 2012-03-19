@@ -40,12 +40,13 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 \end{figure}
 
 %\section{System-Beschreibung}
-
+\section{Resultate beschreiben}
 \section{Modellierung (Django, aufsetzen Projekt)/Backend }
 Über das Django-Framework kann man die Modelle der Klassen bzw. auch Entitäten erfassen.
 Alle Modelle können als Applikationen über einen Administratorbereich durch CRUD gesteuert werden.
 \section{Layout}
-Das Layout bleibt, bis auf einige kleine Anpassungen, dasselbe.
+Das Layout bleibt, bis auf einige kleine Anpassungen, dasselbe:\\
+Im neuen Layout hat die Woche nur noch 5 anstatt 7 Tage und die Links zum admin-Bereich wurden versetzt.
 \section{Effektive Umsetzung der Applikation}
 Modelle erzeugt\\
 urls für wochenplaner
@@ -55,6 +56,10 @@ Template für Wochenansicht erstellt
 Daten werden an template übergeben
 Tage werden korrekt ausgeben
 Tasks sind an der richtigen Stelle (Tag und Person)
+\section{Entwicklungsumgebung}
+\section{Herausforderungen}
+\subsection{json}
+\subsection{Kreuzbild ist doof}
 \section{JS Funktionalität (CRUD mit jQueryUI \& AJAX) }
 Die Wochenansicht der Tasks ist eine rein statische Ansicht.
 Alle Tasks und Sperrtage können über den Django admin per CRUD gesteuert werden. Dies ist aber nur ein Teil der bestehenden Funktionalität.
