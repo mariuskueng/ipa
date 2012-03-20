@@ -1,22 +1,23 @@
 %!TEX root = ../dokumentation.tex
-\section{ERM allink.planer}
+\section{ERMs}
+\subsection{allink.planer}
 Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und Project werden mit dem Wochenplaner verknüpft.
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.99\textwidth,angle=0]{./bilder/erm_planer.pdf}
-\caption{ERM allink.planer}
+\caption[]{ERM allink.planer\footnotemark}
 \end{center}
 \end{figure}
 \footnotetext{Entommen aus allink.planer}
 
 \clearpage
 
-\section{ERM Wochenplaner}
+\subsection{Wochenplaner}
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.99\textwidth,angle=0]{./bilder/erm.pdf}
-\caption{ERM Wochenplaner (die Orange hinterlegten Entitäten stammen aus dem allink.planer)}
+\caption[]{ERM Wochenplaner (die Orange hinterlegten Entitäten stammen aus dem allink.planer)\footnotemark}
 \end{center}
 \end{figure}
 \footnotetext{Eigene Darstellung}
@@ -31,7 +32,7 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 \end{figure}
 
 \clearpage
-\section{Neues Design}
+\subsection{Neues Design}
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.99\textwidth,angle=0]{./bilder/wochenplaner.jpg}
@@ -40,26 +41,80 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 \end{figure}
 
 %\section{System-Beschreibung}
+\section{Umsetzung}
+Da ich nicht auf die gesamte Entstehung des Quellcodes eingehen kann und der Verlauf im git-repository einsehbar ist,
+führe ich die Umsetzung der Ziele auf.\\\\
+Der Wochenplaner besteht aus 2 Bereichen in denen Daten manipuliert werden:
+\begin{itemize}
+    \item Administratorbereich
+    \item Wochenansicht\\
+\end{itemize}
+Obwohl eine Intuitive Bedienung gefordert ist, müssen nicht alle Ziele in der Wochenansicht manipulierbar sein.\\
+Die folgende Aufstellung zeigt auf in welchen Bereichen was manipuliert werden kann.\\
+
+\begin{table}[!ht]
+\begin{center}
+    \begin{longtable}{llp{3cm}l}
+        \toprule Ziel-Nr & Admin & Wochenansicht \\
+        \midrule 1 & x & x \\
+        \midrule 2 & x & x \\
+        \midrule 3 & x & x \\
+        \midrule 4 & x & x \\
+        \midrule 5 & x & x \\
+        \midrule 6 & x & x \\ 
+        \midrule 7 & x & o \\
+        \midrule 8 & x & o \\
+        \midrule 9 & x & o \\
+        \midrule 10 & x & o \\
+        \midrule 11 & x & o \\
+        \midrule 12 & x & o \\
+        \midrule 13 & x & x \\
+        \midrule 14 & x & o \\
+        \midrule 15 & x & o \\
+        \bottomrule
+        \end{longtable}
+    \caption{Funktionsbereiche der Ziele}
+    \label{tab:funktionsbereiche_ziele}
+\end{center}
+\end{table}
+
 \section{Resultate beschreiben}
 \section{Modellierung (Django, aufsetzen Projekt)/Backend }
 Über das Django-Framework kann man die Modelle der Klassen bzw. auch Entitäten erfassen.
-Alle Modelle können als Applikationen über einen Administratorbereich durch CRUD gesteuert werden.
+Alle Modelle können als Applikationen über einen Administratorbereich durch CRUD manipuliert werden.
 \section{Layout}
 Das Layout bleibt, bis auf einige kleine Anpassungen, dasselbe:\\
 Im neuen Layout hat die Woche nur noch 5 anstatt 7 Tage und die Links zum admin-Bereich wurden versetzt.
-\section{Effektive Umsetzung der Applikation}
-Modelle erzeugt\\
-urls für wochenplaner
-Adminbereich eingerichte, App lebt im admin und muss von dort aus gesteuert werden\\
-\section{Templating Wochenansicht/Frontend}
-Template für Wochenansicht erstellt
-Daten werden an template übergeben
-Tage werden korrekt ausgeben
-Tasks sind an der richtigen Stelle (Tag und Person)
+% \section{Effektive Umsetzung der Applikation}
+% Modelle erzeugt\\
+% urls für wochenplaner
+% Adminbereich eingerichte, App lebt im admin und muss von dort aus gesteuert werden\\
+% \section{Templating Wochenansicht/Frontend}
+% Template für Wochenansicht erstellt
+% Daten werden an template übergeben
+% Tage werden korrekt ausgeben
+% Tasks sind an der richtigen Stelle (Tag und Person)
 \section{Entwicklungsumgebung}
+Die Entwicklungsumgebung besteht aus den in den Firmenstandards genannten Technologien.
+% Als Betriebsystem verwende ich MacOS X, was (bis auf TextMate) aber nicht voraussetzend ist für das entwickeln mit Django.\\
+% Django ist ein Python-Framework das sich auf eine schnelle Webentwicklung konzentriert (Details auf djangoproject.com).\\
+% Über das Terminal verwalte ich eine virtuelle Python- und Django-Umgebung und das Versionierungssystem Git.\\
+% Als Texteditor verwende ich TextMate. Ein schlichter aber funktionaler Editor der viele Bundles für Programmiersprachen anbietet.\\
+% \section{Versionierungssystem}
+% Als Firmenstandard wird Git bzw. Github verwendet. In den letzten Jahren ist Git in der Programmierszene sehr beliebt geworden und
+% löst Subversion als Leader ab.\\
+% Über Github können Repositories verwaltet werden und vereinfacht die Zusammenarbeit von Entwickler am selben Projekt sehr stark.
 \section{Herausforderungen}
-\subsection{json}
-\subsection{Kreuzbild ist doof}
+\subsection{JSON}
+Um dynamisch die Datenbank zu manipulieren verwendet allink eine Methode die über das JSON-Format Requests an den Server schickt. 
+Über den django-piston Handler können diese Requests entgegengenommen und weitergeleitet werden.\\
+Bis jetzt habe ich lediglich über einen JSON-Handler (django-piston) Daten aus der Datenbank geholt oder neue Datensätze erstellt.\\
+Einen bestehenden Datensatz zu ändern und diesen dann korrekt im Frontend wieder einzusetzen ist das ein bisschen knifflig, aber im Nachhinein doch sehr logisch zu verstehen.
+Durch eine Einführung von Silvan Spross konnte ich diesen Prozess verstehen und nachvollziehen.
+\subsection{Hintergrundbild für Sperrtag}
+Das Designkonzept sieht ein Kreuz (das so gross ist wie die Zelle) vor um eine gesperrten Tag zu signalisieren.
+Jedoch sieht das, je nach dem wie gross die Zelle ist, merkwürdig und unschön aus. 
+Darum musste ich mit dem Designer eine neue Lösung finden.
 \section{JS Funktionalität (CRUD mit jQueryUI \& AJAX) }
 Die Wochenansicht der Tasks ist eine rein statische Ansicht.
 Alle Tasks und Sperrtage können über den Django admin per CRUD gesteuert werden. Dies ist aber nur ein Teil der bestehenden Funktionalität.
@@ -68,4 +123,4 @@ Sich in Alternativen einzuarbeiten benötigt zu viel Zeit und ist nicht mit jQue
 Per jQueryUI können alle Task frei verschoben werden zu jedem Tag und/oder Person.
 Per AJAX werden neue Tasks automatisch in die DB geschrieben und danach ins HTML eingefügt.
 \section{Implementierung}
-\section{Erreichte Ziele}
+Der Wochenplaner kann als App mit Abhängigkeiten (Person, Projekt) in den allink.planer direkt integriert werden.
