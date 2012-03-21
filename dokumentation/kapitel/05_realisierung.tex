@@ -50,7 +50,7 @@ Der Wochenplaner besteht aus 2 Bereichen in denen Daten manipuliert werden:
     \item Wochenansicht\\
 \end{itemize}
 Obwohl eine Intuitive Bedienung gefordert ist, müssen nicht alle Ziele in der Wochenansicht manipulierbar sein.\\
-Die folgende Aufstellung zeigt auf in welchen Bereichen was manipuliert werden kann.\\
+Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
 
 \begin{table}[!ht]
 \begin{center}
@@ -79,6 +79,8 @@ Die folgende Aufstellung zeigt auf in welchen Bereichen was manipuliert werden k
 \end{table}
 
 \section{Resultate beschreiben}
+Das Resultat meiner IPA ist einen Wochenplaner in das Projektmanagementtool allink.planer zu integrieren.
+Dieser Wochenplaner ist über eine HTML-Ansicht dynamisch bearbeitbar. Die Tasks sind mit Personen und Projekten verknüpft. Dadurch können Analysen gemacht werden.
 \section{Modellierung (Django, aufsetzen Projekt)/Backend }
 Über das Django-Framework kann man die Modelle der Klassen bzw. auch Entitäten erfassen.
 Alle Modelle können als Applikationen über einen Administratorbereich durch CRUD manipuliert werden.
@@ -111,10 +113,10 @@ Um dynamisch die Datenbank zu manipulieren verwendet allink eine Methode die üb
 Bis jetzt habe ich lediglich über einen JSON-Handler (django-piston) Daten aus der Datenbank geholt oder neue Datensätze erstellt.\\
 Einen bestehenden Datensatz zu ändern und diesen dann korrekt im Frontend wieder einzusetzen ist das ein bisschen knifflig, aber im Nachhinein doch sehr logisch zu verstehen.
 Durch eine Einführung von Silvan Spross konnte ich diesen Prozess verstehen und nachvollziehen.
-\subsection{Hintergrundbild für Sperrtag}
-Das Designkonzept sieht ein Kreuz (das so gross ist wie die Zelle) vor um eine gesperrten Tag zu signalisieren.
-Jedoch sieht das, je nach dem wie gross die Zelle ist, merkwürdig und unschön aus. 
-Darum musste ich mit dem Designer eine neue Lösung finden.
+\subsection{Queries für Wochenansicht}
+Bisher habe ich alle Objekte die ich in der Wochenansicht benötigt habe über die view übergeben.
+Im Template habe ich über die Objekte iteriert und die entsprechenden Daten ausgegeben. Dies ist jedoch nicht `schön'. 
+Darum habe ich, mit Unterstützung von Marc der mir die Verschachtlung von Tuples zeigte, die Objekte mit den korrekten Queries verschachelt übergeben und dann im Template aufgelöst.
 \section{JS Funktionalität (CRUD mit jQueryUI \& AJAX) }
 Die Wochenansicht der Tasks ist eine rein statische Ansicht.
 Alle Tasks und Sperrtage können über den Django admin per CRUD gesteuert werden. Dies ist aber nur ein Teil der bestehenden Funktionalität.
