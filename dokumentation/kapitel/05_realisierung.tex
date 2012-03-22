@@ -55,7 +55,7 @@ Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
 \begin{table}[!ht]
 \begin{center}
     \begin{longtable}{llp{3cm}l}
-        \toprule Ziel-Nr & Admin & Wochenansicht \\
+        \toprule Ziel-Nr (MUSS \& KANN) & Admin & Wochenansicht \\
         \midrule 1 & x & x \\
         \midrule 2 & x & x \\
         \midrule 3 & x & x \\
@@ -67,7 +67,7 @@ Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
         \midrule 9 & x & o \\
         \midrule 10 & x & o \\
         \midrule 11 & x & o \\
-        \midrule 12 & x & o \\
+        \midrule 12 & x & x \\
         \midrule 13 & x & x \\
         \midrule 14 & x & o \\
         \midrule 15 & x & o \\
@@ -78,7 +78,7 @@ Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
 \end{center}
 \end{table}
 
-\section{Resultate beschreiben}
+\section{Resultat}
 Das Resultat meiner IPA ist einen Wochenplaner in das Projektmanagementtool allink.planer zu integrieren.
 Dieser Wochenplaner ist über eine HTML-Ansicht dynamisch bearbeitbar. Die Tasks sind mit Personen und Projekten verknüpft. Dadurch können Analysen gemacht werden.
 \section{Modellierung (Django, aufsetzen Projekt)/Backend }
@@ -106,7 +106,7 @@ Die Entwicklungsumgebung besteht aus den in den Firmenstandards genannten Techno
 % Als Firmenstandard wird Git bzw. Github verwendet. In den letzten Jahren ist Git in der Programmierszene sehr beliebt geworden und
 % löst Subversion als Leader ab.\\
 % Über Github können Repositories verwaltet werden und vereinfacht die Zusammenarbeit von Entwickler am selben Projekt sehr stark.
-\section{Herausforderungen}
+\section{Herausforderungen \& Entscheidungen}
 \subsection{JSON}
 Um dynamisch die Datenbank zu manipulieren verwendet allink eine Methode die über das JSON-Format Requests an den Server schickt. 
 Über den django-piston Handler können diese Requests entgegengenommen und weitergeleitet werden.\\
@@ -117,12 +117,21 @@ Durch eine Einführung von Silvan Spross konnte ich diesen Prozess verstehen und
 Bisher habe ich alle Objekte die ich in der Wochenansicht benötigt habe über die view übergeben.
 Im Template habe ich über die Objekte iteriert und die entsprechenden Daten ausgegeben. Dies ist jedoch nicht `schön'. 
 Darum habe ich, mit Unterstützung von Marc der mir die Verschachtlung von Tuples zeigte, die Objekte mit den korrekten Queries verschachelt übergeben und dann im Template aufgelöst.
-\section{JS Funktionalität (CRUD mit jQueryUI \& AJAX) }
+\subsection{JS Funktionalität (CRUD mit jQueryUI \& AJAX) }
 Die Wochenansicht der Tasks ist eine rein statische Ansicht.
 Alle Tasks und Sperrtage können über den Django admin per CRUD gesteuert werden. Dies ist aber nur ein Teil der bestehenden Funktionalität.
 Es wird eine CRUD-Funktionalität im Frontend benötigt. Diese werde ich mit jQueryUI möglich machen da ich mit jQuery am meisten Erfahrung habe.
 Sich in Alternativen einzuarbeiten benötigt zu viel Zeit und ist nicht mit jQuery kompatibel.
 Per jQueryUI können alle Task frei verschoben werden zu jedem Tag und/oder Person.
 Per AJAX werden neue Tasks automatisch in die DB geschrieben und danach ins HTML eingefügt.
+\subsection{Sperrtage}
+Zuerst habe ich Sperrtage nur mit einem Tag versehen, später noch mit einem Startdatum.
+Wenn man aber nachvollziehen will wer, wie lange, wann gefehlt hat, darf man einen Sperrtag nicht einfach überschreiben.
+Also sind die Sperrtage auch mit einem Enddatum versehen. In der Abfragen für die Wochenansicht wird für jeden Tag geprüft,
+ob in dem ein Sperrtag beginnt, endet oder kein Enddatum angegeben ist.
+Somit müssen keine Sperrtage gelöscht werden und es sind mehrere erfassbar, die sich automatisch ergänzen.
+\subsection{Task duplizieren per jQueryUI}
+Mehrere Lösungsansätze aber alle zu kompliziert mit klassischem Cloning. Daher ein plus button der einfach kopiert und unten neu einfügt.
+\section{Semantische Codebehebungen}
 \section{Implementierung}
-Der Wochenplaner kann als App mit Abhängigkeiten (Person, Projekt) in den allink.planer direkt integriert werden.
+Der Wochenplaner kann als App mit Abhängigkeiten (Person, Projekt, piston, jQueryUI) in den allink.planer direkt integriert werden.
