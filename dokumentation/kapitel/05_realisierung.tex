@@ -71,6 +71,10 @@ Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
         \midrule 13 & x & x \\
         \midrule 14 & x & o \\
         \midrule 15 & x & o \\
+        \midrule 16 & o & x \\
+        \midrule 17 & x & x \\
+        \midrule 18 & o & x \\
+        \midrule 19 & o & x \\
         \bottomrule
         \end{longtable}
     \caption{Funktionsbereiche der Ziele}
@@ -81,7 +85,7 @@ Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
 \section{Resultat}
 Das Resultat meiner IPA ist einen Wochenplaner in das Projektmanagementtool allink.planer zu integrieren.
 Dieser Wochenplaner ist über eine HTML-Ansicht dynamisch bearbeitbar. Die Tasks sind mit Personen und Projekten verknüpft. Dadurch können Analysen gemacht werden.
-\section{Modellierung (Django, aufsetzen Projekt)/Backend }
+\section{Modellierung (Django) }
 Über das Django-Framework kann man die Modelle der Klassen bzw. auch Entitäten erfassen.
 Alle Modelle können als Applikationen über einen Administratorbereich durch CRUD manipuliert werden.
 \section{Layout}
@@ -108,7 +112,7 @@ Die Entwicklungsumgebung besteht aus den in den Firmenstandards genannten Techno
 % Über Github können Repositories verwaltet werden und vereinfacht die Zusammenarbeit von Entwickler am selben Projekt sehr stark.
 \section{Herausforderungen \& Entscheidungen}
 \subsection{JSON}
-Um dynamisch die Datenbank zu manipulieren verwendet allink eine Methode die über das JSON-Format Requests an den Server schickt. 
+Um dynamisch die Datenbank zu manipulieren, verwendet allink eine Methode die über das JSON-Format Requests an den Server schickt. 
 Über den django-piston Handler können diese Requests entgegengenommen und weitergeleitet werden.\\
 Bis jetzt habe ich lediglich über einen JSON-Handler (django-piston) Daten aus der Datenbank geholt oder neue Datensätze erstellt.\\
 Einen bestehenden Datensatz zu ändern und diesen dann korrekt im Frontend wieder einzusetzen ist das ein bisschen knifflig, aber im Nachhinein doch sehr logisch zu verstehen.
@@ -131,7 +135,14 @@ Also sind die Sperrtage auch mit einem Enddatum versehen. In der Abfragen für d
 ob in dem ein Sperrtag beginnt, endet oder kein Enddatum angegeben ist.
 Somit müssen keine Sperrtage gelöscht werden und es sind mehrere erfassbar, die sich automatisch ergänzen.
 \subsection{Task duplizieren per jQueryUI}
-Mehrere Lösungsansätze aber alle zu kompliziert mit klassischem Cloning. Daher ein plus button der einfach kopiert und unten neu einfügt.
+Wie man eine Task per AJAX dupliziert ist auf verschiedenen Weisen möglich.\\
+Zuerst habe ich es über ein sogenanntes Cloning versucht in dem eine Kopie der Task erstellt wird und dann als neue Task eingesetzt werden kann.
+Da ich wusste, dass dieses Feature umfangreich wird, habe ich es in einen separaten branch ausgelagert.
+Jedoch stiess ich dabei auf grosse Probleme in der Umsetzung, da das cloning zusätzlich mit einer gedrückten Tastenkombination erfolgen sollte.
+Nach einer Besprechung mit der Projektleitung wurde beschlossen, dass die Task über einen Button dupliziert wird und unten eingesetzt wird.
+Die erstere Variante hätte den Zeitrahmen gesprengt für ein KANN-Ziel.
 \section{Semantische Codebehebungen}
+Am Ende des Testings habe ich zur Erhöhung der Codequalität eine Codesäuberung mit pep8, pyflakes und jshint vorgenommen. Dabei wird falsche Syntax und
+nicht verwendete Imports hervorgehoben.
 \section{Implementierung}
 Der Wochenplaner kann als App mit Abhängigkeiten (Person, Projekt, piston, jQueryUI) in den allink.planer direkt integriert werden.

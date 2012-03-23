@@ -28,46 +28,47 @@ Beginn IPA yatplaner
     \item ERM für Wochenplaner erstellt
     \item allink.planer github repository gecloned
     \item Entwicklungsumgebung aufgesetzt
-    \item Ziel erreicht: Teil 2 zum Grossteil der Dokumentation erfasst und mit Realisierung begonnen
+    \item Ziel erreicht: Anfang Teil 2 der Dokumentation erfasst und mit Realisierung begonnen
     \item mit Django-Modellierung begonnen (Task, DayConfiguration)
-    \item Habe bis jetzt für Doku mehr Zeit gebraucht als im Zeitplan vorgesehen
+    %\item Habe bis jetzt für Doku mehr Zeit gebraucht als im Zeitplan vorgesehen
 \end{itemize}
 \section{15.03.2012}
-\begin{itemize}
-    \item Kapitel Realisierung weiterführen
-    \item Django admin einrichten für week
-    \item Testdaten (Personen) in die Entwicklungsumgebung importieren
-    \item Problem: Die Wochentage zusammenzufassen war relativ knifflig damit man durch jeden Tag iterieren kann
-    \item View erstellen für alle Tasks, Personen und Tage
-    \item Template erstellt und Tabelle so aufgesetzt damit Daten korrekt eingefügt werden
-    \item Template begonnen zu stylen
-    \item Ziel erreicht: Daten korrekt aus Modell laden und in Template einsetzen, Template funktioniert
-    \item (Bin im Zeitplan mit Realisierung)
-\end{itemize}
+    \begin{itemize}
+        \item Kapitel Realisierung weiterführen
+        \item Django admin einrichten für week
+        \item Testdaten (Personen) in die Entwicklungsumgebung importieren
+        \item Problem: Die Wochentage zusammenzufassen war relativ knifflig damit man durch jeden Tag iterieren kann
+        \item View erstellen für alle Tasks, Personen und Tage
+        \item Template erstellt und Tabelle so aufgesetzt damit Daten korrekt eingefügt werden
+        \item Template angefangen zu stylen (CSS)
+        \item Ziel erreicht: Daten korrekt aus Modell laden und in Template einsetzen, Template funktioniert
+        \item (Bin im Zeitplan mit Realisierung)
+    \end{itemize}
 \section{16.03.2012}
     \begin{itemize}
         \item Ansicht funktioniert für erste Versuche mit jQueryUI
-        \item Task sind verschiebbar und sortierbar in andere Tage (ohne callback)
-        \item alle Tasks werden zu javascript Objekte der Klasse Task
-        \item jquery methoden hinzugefügt
-        \item dialog hinzugefügt
-        \item Task Objekt erweitert mit save methode wenn eine Task gespeichert wird
+        \item Task sind verschiebbar und sortierbar in andere Tage (ohne callback/Änderungen werden nicht gespeichert)
+        \item alle Tasks werden zu javascript Objekten der Klasse Task
+        \item jQuery Methoden hinzugefügt (Click-Events)
+        \item Task-Dialog hinzugefügt um neue Task zu erfassen
+        \item Task Objekt erweitert mit save Methode wenn eine Task gespeichert wird
         \item Django Task Formular
         \item Django Task Piston Handler (json)
         \item AJAX POST schicken
-        \item json piston nimmt POST entgegen und führt das formular aus welches die daten in die db speicher
-        \item wenn neuer eintrag gemacht wurde wird die neue task.id zurückgeschickt um es lokal im js task objekt zu speichern
-        \item Ziel: jQueryUI einrichten, mind. POST per Ajax möglich und dynamisches einfügen in Tabelle (beide erreicht)
+        \item piston nimmt json-POST entgegen und führt das Formular, aus welches die Daten in die Datenbank speichert
+        \item wenn eine neue Task erstellt wurde, wird die neue task.id zurückgeschickt um das neue Javascript Task Objekt abzuspeichern
+        \item Ziel erreicht: jQueryUI einrichten, mind. POST per Ajax möglich und dynamisches einfügen in Tabelle
     \end{itemize}
 \section{19.03.2012}
     \begin{itemize}
-        \item Todo: Taskobjekte holen der aktuellen woche
+        \item Taskobjekte der aktuellen Woche in javascript dictionary speichern
         \item Hilfestellung Silvan: PUT Funktionalität in Django abhandeln bei existierendem Objekt
         \item Verschieben von Task (PUT Funktionalität)
         \item Klick auf eine Task öffnet Dialog und man kann die Task bearbeiten und abspeichern
-        \item Bugfix: wenn man eine Task draggt öffnet es danach den Bearbeiten-Dialog. Per deaktivieren des click events kann dies behoben werden.
+        \item Bugfix: wenn man eine Task verschoben wird, öffnet es danach den Bearbeiten-Dialog. Per deaktivieren des click events kann dies behoben werden.
         \item Bugfix: man konnte eine neu erstellte Task nicht verschieben
         \item Projekte werden dynamisch in den Dialog eingefügt und können ausgewählt werden
+        \item Task einem Projekt zuweisen
         \item Ziel: PUT Funktionalität erstellen für Task verschieben und ändern
         \item Dokumentation weiter führen
         \item Besprechung mit Silvan Stand IPA
@@ -101,4 +102,12 @@ Beginn IPA yatplaner
         \item Bugfix man kann nicht weniger als 1 Woche anzeigen
         \item Bugfix wenn man die Tagesanzahl erhöht wird aktuelles Datum nicht berücksichtigt
         \item Besprechung wie das Task-cloning am besten implementiert wird
+    \end{itemize}
+\section{23.03.2012}
+    \begin{itemize}
+        \item Task kann per Klick dupliziert werden (es wird eine neue mit gleichem Inhalt erzeugt und unten eingefügt)
+        \item Task kann per Klick gelöscht werden
+        \item Doku schreiben
+        \item Mit Silvan Wochenplaner angeschaut und Darstellungsanpassungen vorgenommen
+        \item Abnahme Wochenplaner Silvan
     \end{itemize}
