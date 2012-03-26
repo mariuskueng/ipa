@@ -24,6 +24,7 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 
 \section{Design}
 \subsection{Altes Design}
+So sieht der momentane Wochenplaner aus:
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.99\textwidth,angle=0]{./bilder/yatplaner.png}
@@ -33,6 +34,7 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 
 \clearpage
 \subsection{Neues Design}
+Mit folgendem Design soll der Wochenplaner umgesetzt werden:
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.99\textwidth,angle=0]{./bilder/wochenplaner.jpg}
@@ -44,9 +46,9 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 \section{Umsetzung}
 Da ich nicht auf die gesamte Entstehung des Quellcodes eingehen kann und der Verlauf im git-repository einsehbar ist,
 führe ich die Umsetzung der Ziele auf.\\\\
-Der Wochenplaner besteht aus 2 Bereichen in denen Daten manipuliert werden:
+Der Wochenplaner besteht aus 2 Bereichen in denen Daten manipuliert werden können:
 \begin{itemize}
-    \item Administratorbereich
+    \item Administrationsbereich
     \item Wochenansicht\\
 \end{itemize}
 Obwohl eine Intuitive Bedienung gefordert ist, müssen nicht alle Ziele in der Wochenansicht manipulierbar sein.\\
@@ -81,15 +83,15 @@ Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
     \label{tab:funktionsbereiche_ziele}
 \end{center}
 \end{table}
-
+Legende: x = umgesetzt, o = nicht umgesetzt
 \section{Resultat}
-Das Resultat meiner IPA ist einen Wochenplaner in das Projektmanagementtool allink.planer zu integrieren.
-Dieser Wochenplaner ist über eine HTML-Ansicht dynamisch bearbeitbar. Die Tasks sind mit Personen und Projekten verknüpft. Dadurch können Analysen gemacht werden.
-\section{Modellierung (Django) }
-Über das Django-Framework kann man die Modelle der Klassen bzw. auch Entitäten erfassen.
+Das Resultat meiner IPA ist eine Webapplikation, in der Tasks über eine HTML-Ansicht per Ajax intuitiv verwaltet werden können. Die Applikation ist in das Projektmanagementtool allink.planer integriert.
+Die Tasks sind mit Personen und Projekten verknüpft. Dadurch können in Zukunft diverse Analysen gemacht werden.
+\section{Modellierung (Django)}
+Über das Django-Framework kann man die Modelle der Klassen bzw. Entitäten erfassen.
 Alle Modelle können als Applikationen über einen Administratorbereich durch CRUD manipuliert werden.
 \section{Layout}
-Das Layout bleibt, bis auf einige kleine Anpassungen, dasselbe:\\
+Das Layout bleibt, bis auf einige kleine Anpassungen, dasselbe.\\
 Im neuen Layout hat die Woche nur noch 5 anstatt 7 Tage und die Links zum admin-Bereich wurden versetzt.
 % \section{Effektive Umsetzung der Applikation}
 % Modelle erzeugt\\
@@ -112,35 +114,34 @@ Die Entwicklungsumgebung besteht aus den in den Firmenstandards genannten Techno
 % Über Github können Repositories verwaltet werden und vereinfacht die Zusammenarbeit von Entwickler am selben Projekt sehr stark.
 \section{Herausforderungen \& Entscheidungen}
 \subsection{JSON}
-Um dynamisch die Datenbank zu manipulieren, verwendet allink eine Methode die über das JSON-Format Requests an den Server schickt. 
+Um dynamisch die Datenbank zu manipulieren, kann eine Methode in Django verwendet werden, über die Requests im JSON-Format an den Server geschickt werden. 
 Über den django-piston Handler können diese Requests entgegengenommen und weitergeleitet werden.\\
-Bis jetzt habe ich lediglich über einen JSON-Handler (django-piston) Daten aus der Datenbank geholt oder neue Datensätze erstellt.\\
-Einen bestehenden Datensatz zu ändern und diesen dann korrekt im Frontend wieder einzusetzen ist das ein bisschen knifflig, aber im Nachhinein doch sehr logisch zu verstehen.
+Bis jetzt habe ich lediglich über einen JSON-Handler Daten aus der Datenbank gelesen oder neue Datensätze erstellt.\\
+Einen bestehenden Datensatz zu ändern und diesen dann korrekt im Frontend wieder einzusetzen, ist ein bisschen knifflig, aber im Nachhinein doch sehr logisch zu verstehen.
 Durch eine Einführung von Silvan Spross konnte ich diesen Prozess verstehen und nachvollziehen.
 \subsection{Queries für Wochenansicht}
-Bisher habe ich alle Objekte die ich in der Wochenansicht benötigt habe über die view übergeben.
+Bisher habe ich alle Objekte die ich in der Wochenansicht benötigt der View übergeben.
 Im Template habe ich über die Objekte iteriert und die entsprechenden Daten ausgegeben. Dies ist jedoch nicht `schön'. 
-Darum habe ich, mit Unterstützung von Marc der mir die Verschachtlung von Tuples zeigte, die Objekte mit den korrekten Queries verschachelt übergeben und dann im Template aufgelöst.
+Darum habe ich mit Unterstützung von Marc Egli, der mir die Verschachtlung von Tuples zeigte, die Objekte mit den korrekten Queries verschachelt übergeben und dann im Template aufgelöst.
 \subsection{JS Funktionalität (CRUD mit jQueryUI \& AJAX) }
 Die Wochenansicht der Tasks ist eine rein statische Ansicht.
-Alle Tasks und Sperrtage können über den Django admin per CRUD gesteuert werden. Dies ist aber nur ein Teil der bestehenden Funktionalität.
-Es wird eine CRUD-Funktionalität im Frontend benötigt. Diese werde ich mit jQueryUI möglich machen da ich mit jQuery am meisten Erfahrung habe.
+Alle Tasks und Sperrtage können über den Django admin per CRUD manipuliert werden. Dies ist aber nur ein Teil der bestehenden Funktionalität.
+Es wird eine CRUD-Funktionalität im Frontend benötigt. Diese werde ich mit jQueryUI realisieren da ich mit jQuery am meisten Erfahrung habe und Firmenstandard ist.
 Sich in Alternativen einzuarbeiten benötigt zu viel Zeit und ist nicht mit jQuery kompatibel.
-Per jQueryUI können alle Task frei verschoben werden zu jedem Tag und/oder Person.
+Per jQueryUI können alle Tasks frei zu jedem Tag und/oder Person verschoben werden.
 Per AJAX werden neue Tasks automatisch in die DB geschrieben und danach ins HTML eingefügt.
 \subsection{Sperrtage}
-Zuerst habe ich Sperrtage nur mit einem Tag versehen, später noch mit einem Startdatum.
-Wenn man aber nachvollziehen will wer, wie lange, wann gefehlt hat, darf man einen Sperrtag nicht einfach überschreiben.
-Also sind die Sperrtage auch mit einem Enddatum versehen. In der Abfragen für die Wochenansicht wird für jeden Tag geprüft,
-ob in dem ein Sperrtag beginnt, endet oder kein Enddatum angegeben ist.
+Zuerst habe ich Sperrtage nur mit einem Tag versehen und später noch mit einem Startdatum.
+Wenn man aber nachvollziehen will wer wie lange wann gefehlt hat, darf man einen Sperrtag nicht einfach überschreiben.
+Also sind die Sperrtage auch mit einem Enddatum versehen. In der Abfrage für die Wochenansicht wird für jeden Tag geprüft,
+ob ein Sperrtag beginnt, endet oder kein Enddatum angegeben ist.
 Somit müssen keine Sperrtage gelöscht werden und es sind mehrere erfassbar, die sich automatisch ergänzen.
 \subsection{Task duplizieren per jQueryUI}
-Wie man eine Task per AJAX dupliziert ist auf verschiedenen Weisen möglich.\\
-Zuerst habe ich es über ein sogenanntes Cloning versucht in dem eine Kopie der Task erstellt wird und dann als neue Task eingesetzt werden kann.
-Da ich wusste, dass dieses Feature umfangreich wird, habe ich es in einen separaten branch ausgelagert.
+Wie man einen Task per AJAX dupliziert ist auf verschiedenen Weisen möglich.\\
+Zuerst habe ich es über ein sogenanntes Cloning versucht in dem eine Kopie des Tasks erstellt wird und dann als neuer Task eingesetzt werden kann.
+Da ich wusste, dass dieses Feature umfangreich wird, habe ich es in einen separaten ``branch'' ausgelagert.
 Jedoch stiess ich dabei auf grosse Probleme in der Umsetzung, da das cloning zusätzlich mit einer gedrückten Tastenkombination erfolgen sollte.
-Nach einer Besprechung mit der Projektleitung wurde beschlossen, dass die Task über einen Button dupliziert wird und unten eingesetzt wird.
-Die erstere Variante hätte den Zeitrahmen gesprengt für ein KANN-Ziel.
+Nach einer Besprechung mit der Projektleitung wurde beschlossen, dass den Task über einen Button dupliziert und unten eingesetzt wird.
 \section{Semantische Codebehebungen}
 Am Ende des Testings habe ich zur Erhöhung der Codequalität eine Codesäuberung mit pep8, pyflakes und jshint vorgenommen. Dabei wird falsche Syntax und
 nicht verwendete Imports hervorgehoben.

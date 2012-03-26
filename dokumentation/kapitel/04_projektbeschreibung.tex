@@ -1,14 +1,14 @@
 %!TEX root = ../dokumentation.tex
 \section{Umfeld}
-Momentan läuft der Wochenplaner vom allink.planer getrennt und kann nicht in den allink Projektablauf einbezogen werden.
+Momentan existiert der Wochenplaner als eingenständige Applikation.
 Das Tool fungiert mehr als eine Tafel auf die Post-It's geklebt werden. D. h. die Aufgaben sind nicht direkt im Projektmanagementtool mit der Person verbunden.
 Somit bietet das Tool keinen Mehrwert bei der Auswertung des Projektablaufs.\\
 \\
-Das Tool ist in Ruby on Rails programmiert, was nicht (mehr) dem Firmenstandard entspricht, und kann deshalb nur mühsam gewartet und erweitert werden.
+Das Tool ist in Ruby on Rails programmiert, was nicht dem Firmenstandard entspricht, und kann deshalb nur mühsam gewartet und erweitert werden.
 
 \section{Präzisierung der Aufgabenstellung}
-Da die Aufgabenstellung detailliert erfasst wurde und ein Prototyp existiert, ist relativ klar was die eigentliche Aufgabenstellung umfasst.
-Zur weiteren Präzisierung, werde ich eine detaillierte IST-Analyse vornehmen. Diese wird mit dem Auftraggeber besprochen, 
+Die Aufgabenstellung sieht vor, dass mindestens die bestehende Funktionalität vorhanden und die intuitive Bedienung verbessert wird. 
+Zur weiteren Präzisierung werde ich eine detaillierte IST-Analyse vornehmen. Diese wird mit dem Auftraggeber besprochen, 
 damit die MUSS- und KANN-Ziele erfasst werden können und ersichtlich wird, welche Funktionalitäten überhaupt noch Sinn machen und was weggelassen werden kann.
 
 \section{Analyse Wochenplaner (IST-Zustand)}
@@ -33,23 +33,23 @@ damit die MUSS- und KANN-Ziele erfasst werden können und ersichtlich wird, welc
 \subsection{Darstellung}
 Der Wochenplaner verfügt über mehrere Darstellungen:
 \begin{itemize}
-    \item Kalenderansicht der aktuellen Woche (Screenshot)
+    \item Kalenderansicht der aktuellen Woche (siehe Design-Screenshot)
     \item Übersicht aller Angestellten
-    \item Monatsansicht einer Person
+    \item Monatsansicht pro Person
     \item Übersicht aller erfassten Tasks
 \end{itemize}
 
 \subsection{Funktionsumfang}
 \begin{itemize}
-    \item Neue Task durch Doppelklick auf Personentag per Dialog erfassen (Screenshot)
-    \item Klick auf Task öffnet die Detailansicht (um bspw. Änderungen vorzunehmen)
-    \item Verschiebung einer Task per Drag \& Drop
+    \item Neue Task durch Doppelklick auf Personentag per Dialog erfassen
+    \item Klick auf Task öffnet die Detailansicht (um bspw. Änderungen vorzunehmen oder die Task zu löschen)
+    \item Verschiebem eines Tasks per Drag \& Drop
     \begin{itemize}
         \item Task in anderen Tag verschieben
         \item Task einer anderen Person zuweisen
     \end{itemize}
     \item In der Kalenderwoche per Link vor- oder zurückspringen
-    \item weitere 7 Tage in der Ansicht hinzufügen (kann auch rückgängig gemacht werden)
+    \item weitere 7 Tage in der Ansicht anzeigen (funktioniert auch umgekehrt)
     \item Wochentage können für wiederkehrende Events (Schule, Frei) markiert werden
 \end{itemize}
 \subsection{Defizite}
@@ -94,7 +94,7 @@ In einer Sitzung mit der Projektleitung wurde der IST-Zustand besprochen und die
         \toprule Nr & Funktion & Beschreibung & Priorität \\
         \midrule 15 & Task duplizieren & Der Benutzer kann einen Task duplizieren. & 1\\
         \midrule 16 & Sperrtag Startdatum geben & Der Benutzer kann einem Sperrtag ein Start- \& Endatum geben. &  3\\ 
-        \midrule 17 & Warnmeldung Max & Es erscheint eine Warnmeldung wenn die Summe aller Arbeitsstunden pro Tag 8h überschreiten. & 4\\
+        \midrule 17 & Warnmeldung Max Stunden & Es erscheint eine Warnmeldung wenn die Summe aller Arbeitsstunden pro Tag 8h überschreiten. & 4\\
         \midrule 18 & Tasks sortieren & Tasks können innerhalb eines Tages sortiert werden. & 2\\
         \bottomrule
     \end{tabular}
