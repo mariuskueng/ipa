@@ -6,7 +6,7 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.99\textwidth,angle=0]{./bilder/erm_planer.pdf}
-\caption[]{ERM allink.planer\footnotemark}
+\caption[ERM allink.planer]{ERM allink.planer\footnotemark}
 \end{center}
 \end{figure}
 \footnotetext{Entommen aus allink.planer}
@@ -16,12 +16,12 @@ Als Ausgangslage dient mir das ERM des allink.planer. Die Entitäten Person und 
 \subsection{Wochenplaner}
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.99\textwidth,angle=0]{./bilder/erm.pdf}
-\caption[]{ERM Wochenplaner (die Orange hinterlegten Entitäten stammen aus dem allink.planer)\footnotemark}
+\includegraphics[width=0.5\textwidth,angle=0]{./bilder/erm.pdf}
+\caption[ERM Wochenplaner]{ERM Wochenplaner (die Orange hinterlegten Entitäten stammen aus dem allink.planer)\footnotemark}
 \end{center}
 \end{figure}
 \footnotetext{Eigene Darstellung}
-
+\clearpage
 \section{Design}
 \subsection{Altes Design}
 So sieht der momentane Wochenplaner aus:
@@ -34,7 +34,7 @@ So sieht der momentane Wochenplaner aus:
 
 \clearpage
 \subsection{Neues Design}
-Mit folgendem Design soll der Wochenplaner umgesetzt werden:
+Mit folgendem Design soll der Wochenplaner umgesetzt und an das allink CI/CO angepasst werden:
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.99\textwidth,angle=0]{./bilder/wochenplaner.jpg}
@@ -48,50 +48,66 @@ Da ich nicht auf die gesamte Entstehung des Quellcodes eingehen kann und der Ver
 führe ich die Umsetzung der Ziele auf.\\\\
 Der Wochenplaner besteht aus 2 Bereichen in denen Daten manipuliert werden können:
 \begin{itemize}
-    \item Administrationsbereich
-    \item Wochenansicht\\
+    \item Administrationsbereich (ist ein Standardfeature von Django um Applikationen zu verwalten)
+    \item Wochenansicht (zusätzliche View im bestehenden Adminbereich)\\
 \end{itemize}
 Obwohl eine Intuitive Bedienung gefordert ist, müssen nicht alle Ziele in der Wochenansicht manipulierbar sein.\\
-Die folgende Aufstellung zeigt auf welche Ziele wie umgesetzt wurden.\\
+Die folgende Aufstellung zeigt auf welche Ziele wo umgesetzt wurden.\\
 
 \begin{table}[!ht]
 \begin{center}
     \begin{longtable}{llp{3cm}l}
-        \toprule Ziel-Nr (MUSS \& KANN) & Admin & Wochenansicht \\
+        \toprule Ziel-Nr & Admin & Wochenansicht \\
         \midrule 1 & x & x \\
         \midrule 2 & x & x \\
         \midrule 3 & x & x \\
         \midrule 4 & x & x \\
         \midrule 5 & x & x \\
         \midrule 6 & x & x \\ 
-        \midrule 7 & x & o \\
-        \midrule 8 & x & o \\
-        \midrule 9 & x & o \\
-        \midrule 10 & x & o \\
-        \midrule 11 & x & o \\
+        \midrule 7 & x &  \\
+        \midrule 8 & x &  \\
+        \midrule 9 & x &  \\
+        \midrule 10 & x &  \\
+        \midrule 11 & x &  \\
         \midrule 12 & x & x \\
         \midrule 13 & x & x \\
-        \midrule 14 & x & o \\
-        \midrule 15 & x & o \\
-        \midrule 16 & o & x \\
-        \midrule 17 & x & x \\
-        \midrule 18 & o & x \\
-        \midrule 19 & o & x \\
+        \midrule 14 & x &  \\
+        \midrule 15 & x &  \\
+        \midrule 16 &  & x \\
+        \midrule 17 &  & x \\
+        \midrule 18 &  & x \\
+        \midrule 19 &  & x \\
         \bottomrule
         \end{longtable}
     \caption{Funktionsbereiche der Ziele}
     \label{tab:funktionsbereiche_ziele}
 \end{center}
 \end{table}
-Legende: x = umgesetzt, o = nicht umgesetzt
 \section{Resultat}
 Das Resultat meiner IPA ist eine Webapplikation, in der Tasks über eine HTML-Ansicht per Ajax intuitiv verwaltet werden können. Die Applikation ist in das Projektmanagementtool allink.planer integriert.
 Die Tasks sind mit Personen und Projekten verknüpft. Dadurch können in Zukunft diverse Analysen gemacht werden.
-\section{Modellierung (Django)}
+\section{Modellierung}
 Über das Django-Framework kann man die Modelle der Klassen bzw. Entitäten erfassen.
 Alle Modelle können als Applikationen über einen Administratorbereich durch CRUD manipuliert werden.
+\subsection{Task}
+\begin{itemize}
+    \item Name (Char)
+    \item Duedate (Date)
+    \item Person (Fremdschlüssel)
+    \item Duration (Stundenanzahl)
+    \item Project (Fremdschlüssel)
+    \item sortindex (int)
+\end{itemize}
+\subsection{Tageskonfiguration}
+    \begin{itemize}
+        \item Description (Char)
+        \item Day (Int, ChoiceField)
+        \item Person (Fremdschlüssel)
+        \item startdate (Date)
+        \item enddate (Date)
+    \end{itemize}
 \section{Layout}
-Das Layout bleibt, bis auf einige kleine Anpassungen, dasselbe.\\
+Das Layout bleibt, bis auf einige kleine Anpassungen und das neue Design, dasselbe.\\
 Im neuen Layout hat die Woche nur noch 5 anstatt 7 Tage und die Links zum admin-Bereich wurden versetzt.
 % \section{Effektive Umsetzung der Applikation}
 % Modelle erzeugt\\
@@ -122,7 +138,7 @@ Durch eine Einführung von Silvan Spross konnte ich diesen Prozess verstehen und
 \subsection{Queries für Wochenansicht}
 Bisher habe ich alle Objekte die ich in der Wochenansicht benötigt der View übergeben.
 Im Template habe ich über die Objekte iteriert und die entsprechenden Daten ausgegeben. Dies ist jedoch nicht `schön'. 
-Darum habe ich mit Unterstützung von Marc Egli, der mir die Verschachtlung von Tuples zeigte, die Objekte mit den korrekten Queries verschachelt übergeben und dann im Template aufgelöst.
+Darum habe ich mit Unterstützung von Marc Egli, der mir die Verschachtelung von Tuples zeigte, die Objekte mit den korrekten Queries verschachtelt übergeben und dann im Template aufgelöst.
 \subsection{JS Funktionalität (CRUD mit jQueryUI \& AJAX) }
 Die Wochenansicht der Tasks ist eine rein statische Ansicht.
 Alle Tasks und Sperrtage können über den Django admin per CRUD manipuliert werden. Dies ist aber nur ein Teil der bestehenden Funktionalität.
@@ -145,5 +161,5 @@ Nach einer Besprechung mit der Projektleitung wurde beschlossen, dass den Task �
 \section{Semantische Codebehebungen}
 Am Ende des Testings habe ich zur Erhöhung der Codequalität eine Codesäuberung mit pep8, pyflakes und jshint vorgenommen. Dabei wird falsche Syntax und
 nicht verwendete Imports hervorgehoben.
-\section{Implementierung}
-Der Wochenplaner kann als App mit Abhängigkeiten (Person, Projekt, piston, jQueryUI) in den allink.planer direkt integriert werden.
+% \section{Implementierung}
+% Der Wochenplaner kann als App mit Abhängigkeiten (Person, Projekt, piston, jQueryUI) in den allink.planer direkt integriert werden.

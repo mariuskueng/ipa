@@ -1,6 +1,6 @@
 %!TEX root = ../dokumentation.tex
 \section{Umfeld}
-Momentan existiert der Wochenplaner als eingenständige Applikation.
+Momentan existiert der Wochenplaner als eigenständige Applikation.
 Das Tool fungiert mehr als eine Tafel auf die Post-It's geklebt werden. D. h. die Aufgaben sind nicht direkt im Projektmanagementtool mit der Person verbunden.
 Somit bietet das Tool keinen Mehrwert bei der Auswertung des Projektablaufs.\\
 \\
@@ -9,7 +9,7 @@ Das Tool ist in Ruby on Rails programmiert, was nicht dem Firmenstandard entspri
 \section{Präzisierung der Aufgabenstellung}
 Die Aufgabenstellung sieht vor, dass mindestens die bestehende Funktionalität vorhanden und die intuitive Bedienung verbessert wird. 
 Zur weiteren Präzisierung werde ich eine detaillierte IST-Analyse vornehmen. Diese wird mit dem Auftraggeber besprochen, 
-damit die MUSS- und KANN-Ziele erfasst werden können und ersichtlich wird, welche Funktionalitäten überhaupt noch Sinn machen und was weggelassen werden kann.
+damit die MUSS- und KANN-Ziele erfasst werden können und ersichtlich wird, welche Funktionalität überhaupt noch Sinn machen und was weggelassen werden kann.
 
 \section{Analyse Wochenplaner (IST-Zustand)}
 
@@ -43,7 +43,7 @@ Der Wochenplaner verfügt über mehrere Darstellungen:
 \begin{itemize}
     \item Neue Task durch Doppelklick auf Personentag per Dialog erfassen
     \item Klick auf Task öffnet die Detailansicht (um bspw. Änderungen vorzunehmen oder die Task zu löschen)
-    \item Verschiebem eines Tasks per Drag \& Drop
+    \item Verschieben eines Tasks per Drag \& Drop
     \begin{itemize}
         \item Task in anderen Tag verschieben
         \item Task einer anderen Person zuweisen
@@ -61,7 +61,7 @@ Der Wochenplaner verfügt über mehrere Darstellungen:
 
 \section{Definition Ziele}
 In einer Sitzung mit der Projektleitung wurde der IST-Zustand besprochen und die Ziele definiert.
-
+\clearpage
 \subsection{MUSS-Ziele}
 \begin{table}[!ht]
 \begin{center}
@@ -87,10 +87,11 @@ In einer Sitzung mit der Projektleitung wurde der IST-Zustand besprochen und die
     \label{tab:muss_funktionen}
 \end{center}
 \end{table}
+\clearpage
 \subsection{KANN-Ziele}
 \begin{table}[!ht]
 \begin{center}
-    \begin{tabular}{llp{8cm}l}
+    \begin{tabular}{llp{6cm}l}
         \toprule Nr & Funktion & Beschreibung & Priorität \\
         \midrule 15 & Task duplizieren & Der Benutzer kann einen Task duplizieren. & 1\\
         \midrule 16 & Sperrtag Startdatum geben & Der Benutzer kann einem Sperrtag ein Start- \& Endatum geben. &  3\\ 
